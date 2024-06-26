@@ -6,7 +6,7 @@
 resource "aws_security_group" "default" {
   count = var.enable_security_group && length(var.sg_ids) < 1 ? 1 : 0
 
-  name        = format("%s-%s-sg", var.namespace, var.environment)
+  name        = "${var.namespace}-${var.environment}-alb-sg"
   vpc_id      = var.vpc_id
   description = var.sg_description
   tags        = var.tags
